@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>To-do list</title>
@@ -7,16 +8,16 @@
               rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
               crossorigin="anonymous">
-        <link rel="stylesheet" href="background.css">
     </head>
     <body>
         <div class="container">
             <center><h2>To-do list</h2></center>
             <hr/>
-            <table border="1" class="table table-bordered table-striped">
+            <a th:href="@{/addTodoForm}"> <button type="button" class="btn btn-primary mb-2 shadow">Add task</button> </a>
+            <table class="table table-bordered table-striped shadow">
                 <thead>
                 <tr>
-                    <th>To-do</th>
+                    <th>Task</th>
                     <th>Deadline</th>
                     <th>Importance</th>
                 </tr>

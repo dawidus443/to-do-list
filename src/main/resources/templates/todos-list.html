@@ -17,9 +17,10 @@
             <table class="table table-bordered table-striped shadow">
                 <thead>
                 <tr>
-                    <th>Task</th>
+                    <th class="w-50">Task</th>
                     <th>Deadline</th>
                     <th>Importance</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,11 @@
                     <td th:text="${todo.todo}"></td>
                     <td th:text="${todo.deadline}"></td>
                     <td th:text="${todo.importance}"></td>
+                    <td>
+
+                        <a th:href="@{/showUpdateForm(todoId=${todo.id})}"> <button type="button" class="btn btn-info shadow">Update</button> </a>
+                        <a th:href="@{/deleteTodo(todoId=${todo.id})}"> <button type="button" class="btn btn-danger shadow">Delete</button> </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

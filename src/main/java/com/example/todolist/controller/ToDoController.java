@@ -3,10 +3,12 @@ package com.example.todolist.controller;
 import com.example.todolist.entity.ToDo;
 import com.example.todolist.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -34,6 +36,20 @@ public class ToDoController {
     @PostMapping("/saveTodo")
     public String saveTodo(@ModelAttribute ToDo todo){
         eRepo.save(todo);
+        return "redirect:/list";
+    }
+
+    @GetMapping("/showUpdateForm")
+    public ModelAndView showUpdateForm(@RequestParam Long todoId){
+        ModelAndView mav = new ModelAndView("add-todo-form");
+        ToDo todo = eRepo.findById(todoId).get();
+        mav.addObject("todo",todo);
+        return mav;
+    }
+
+    @GetMapping("/deleteTodo")
+    public String deleteTodo(@RequestParam Long todoId){
+        eRepo.deleteById(todoId);
         return "redirect:/list";
     }
 
